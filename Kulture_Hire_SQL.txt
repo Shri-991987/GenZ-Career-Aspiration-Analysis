@@ -1,0 +1,142 @@
+1. What is the gender distribution of respondents from India?﻿﻿select count(*) as Count,Gender 
+from data
+where country = "India"
+group by Gender;﻿﻿--------------------------------------------------------------------------------------------------------------------------﻿
+2. What percentage of respondents from India are interested in education abroad and sponsorship?﻿﻿SELECT 
+    ROUND((1 / COUNT(*)) * (SELECT COUNT(*) * 100
+	FROM data 
+	WHERE country = 'India' AND Higher_Education IN ('yes', 'maybe')),2) AS percentage_interested 
+FROM data
+WHERE country = 'India';﻿﻿--------------------------------------------------------------------------------------------------------------------------﻿
+3. What are the 6 top influences on career aspirations for respondents in India?﻿﻿﻿
+
+select count(*) as Count,Influencing_Factors
+From data
+where country = 'India'
+Group By Influencing_Factors
+Order by Count DESC
+Limit 6;
+
+------------------------------------------------------------------------------------------------
+4. How do career aspiration influences vary by gender in India?
+
+select count(*) as Count,Influencing_Factors,gender
+From data
+where country = 'India'
+Group By gender,Influencing_Factors;
+
+5. What percentage of respondents are willing to work for a company for at least 3 years?
+
+select (1/count(*)) * (
+select count(*) *100 as Percentage
+From data
+where country = 'India' and (good_Term_Employment = 'Yes' or good_Term_Employment = 'Maybe'))
+from data
+where Country = 'India';
+
+---------------------------------------------------------------------------------------------
+
+6. How many respondents prefer to work for socially impactful companies?
+
+select count(*) as Count
+from data
+where country = 'India' and Low_social_impact <5;
+
+---------------------------------------------------------------------------------------------
+
+7. How does the preference for socially impactful companies vary by gender?
+
+select gender,Low_social_impact,count(*) as Count
+from data
+where country = 'India'
+group by gender,Low_social_impact
+order by gender;
+
+---------------------------------------------------------------------------------------------
+
+8. What is the distribution of minimum expected salary in the first three years among respondents?
+
+select Salary_expectations,count(*) as Count
+from data
+where country = 'India'
+Group By Salary_expectations
+Order by Count;
+
+----------------------------------------------------------------------------------------------
+
+9. What is the expected minimum monthly salary in hand?
+
+select min(Starting_salary_expectation)
+from data
+where country = 'India';
+
+--------------------------------------------------------------------------------------------------------
+
+10. What percentage of respondents prefer remote working?
+
+select 1/count(*) * (
+select count(*) * 100
+from data
+where country = 'India' and Optimal_work_setting in 
+('Fully remote','Flexible remote work'))
+from data
+where country = 'India';
+
+-------------------------------------------------------------------------------------------------
+
+11. What is the preferred number of daily work hours?
+
+select Daily_work_hours,count(Daily_work_hours)
+from data
+where country = 'India'
+Group BY Daily_work_hours
+order by Daily_work_hours desc
+limit 1;
+
+-------------------------------------------------------------------------------------------------
+
+12. What are the common work frustrations among respondents?
+
+select Work_frustrations,count(*) as Count
+from data
+where country ='India'
+group by Work_frustrations
+order by Count Desc
+Limit 3;
+
+-------------------------------------------------------------------------------------------------
+
+13. How does the need for work-life balance interventions vary by gender?
+
+select gender,Need_for_time_off,count(*) as Count
+from data
+where country = 'India'
+group by gender,Need_for_time_off;
+
+-------------------------------------------------------------------------------------------------
+
+14. How many respondents are willing to work under an abusive manager?
+
+select count(Toxic_leadership)
+from data
+where country = 'India' and Toxic_leadership = 'Yes';
+
+------------------------------------------------------------------------------------------------
+
+15. What is the distribution of minimum expected salary after five years?
+
+select Post_five_year_salary,Count(*) as Count
+from data
+where country = 'India'
+group by Post_five_year_salary
+order by Count;
+
+-----------------------------------------------------------------------------------------------
+
+16. What are the remote working preferences by gender?
+
+
+
+17. What are the top work frustrations for each gender?
+18. What factors boost work happiness and productivity for respondents?
+19. What percentage of respondents need sponsorship for education abroad?
