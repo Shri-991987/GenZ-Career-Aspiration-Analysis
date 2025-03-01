@@ -44,8 +44,8 @@ Perform data cleaning and preprocessing as per the provided instructions.
 
 #### Data Analysis:
 
-Use MySQL queries to extract key insights and export the results into Excel.
-Open the Excel file to explore the interactive dashboards and visualizations.
+Use MySQL queries to extract key insights and export the results into Excel. Donw using SQL queries described in the "SQL.txt" file.
+Open the Excel file to explore the interactive dashboards and visualizations. This can be observed in "Dashboard" file.
 
 Review Findings:
 
